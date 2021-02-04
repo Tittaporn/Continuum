@@ -15,6 +15,8 @@
 		366E28BC25CA05E400CB966F /* PostError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E28BB25CA05E400CB966F /* PostError.swift */; };
 		366E28C025CA0B5E00CB966F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E28BF25CA0B5E00CB966F /* PostTableViewCell.swift */; };
 		366E28C325CA291A00CB966F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E28C225CA291A00CB966F /* DateExtension.swift */; };
+		367309DF25CB549B008FA744 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367309DE25CB549B008FA744 /* SearchableRecord.swift */; };
+		367309E225CB7EC5008FA744 /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367309E125CB7EC5008FA744 /* PhotoSelectorViewController.swift */; };
 		36CEE45D25CA68BF000E4D34 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CEE45C25CA68BF000E4D34 /* UIViewControllerExtension.swift */; };
 		F7F99C392211F96400D13C4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F99C382211F96400D13C4C /* AppDelegate.swift */; };
 		F7F99C3E2211F96400D13C4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F99C3C2211F96400D13C4C /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 		366E28BB25CA05E400CB966F /* PostError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostError.swift; sourceTree = "<group>"; };
 		366E28BF25CA0B5E00CB966F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		366E28C225CA291A00CB966F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		367309DE25CB549B008FA744 /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
+		367309E125CB7EC5008FA744 /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		36CEE45C25CA68BF000E4D34 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		F7F99C352211F96400D13C4C /* Continuum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Continuum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F99C382211F96400D13C4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				366E28B425C9FBE500CB966F /* Post.swift */,
+				367309DE25CB549B008FA744 /* SearchableRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 				366E28AB25C9F9E900CB966F /* PostListTableViewController.swift */,
 				366E28AE25C9FA9500CB966F /* PostDetailTableViewController.swift */,
 				366E28B125C9FB1F00CB966F /* AddPostTableViewController.swift */,
+				367309E125CB7EC5008FA744 /* PhotoSelectorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,11 +194,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = trevorAdcock;
 				TargetAttributes = {
 					F7F99C342211F96400D13C4C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -238,10 +245,12 @@
 				366E28B225C9FB1F00CB966F /* AddPostTableViewController.swift in Sources */,
 				366E28C025CA0B5E00CB966F /* PostTableViewCell.swift in Sources */,
 				366E28C325CA291A00CB966F /* DateExtension.swift in Sources */,
+				367309E225CB7EC5008FA744 /* PhotoSelectorViewController.swift in Sources */,
 				366E28AF25C9FA9500CB966F /* PostDetailTableViewController.swift in Sources */,
 				366E28B525C9FBE500CB966F /* Post.swift in Sources */,
 				366E28BC25CA05E400CB966F /* PostError.swift in Sources */,
 				366E28B825CA026D00CB966F /* PostController.swift in Sources */,
+				367309DF25CB549B008FA744 /* SearchableRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +302,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -354,6 +364,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -396,7 +407,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.leemccormick.Continuum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -414,7 +425,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.leemccormick.Continuum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

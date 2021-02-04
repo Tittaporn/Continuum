@@ -34,6 +34,19 @@ class PostDetailTableViewController: UITableViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
+        // Add an IBAction from the Share button in your PostDetailTableViewController if you have not already.
+        //  Initialize a UIActivityViewController with the Post’s image and the caption as the shareable objects.
+        // Present the UIActivityViewController.
+        guard let post = post else {return}
+        let postImage = post.photo
+        let postCaption = post.caption
+        
+        
+        let activityViewController = UIActivityViewController(activityItems: [postImage,postCaption], applicationActivities: nil)
+        
+        present(activityViewController, animated: true) {
+            
+        }
         
     }
     

@@ -42,3 +42,18 @@ class Comment {
         self.post = post
     }
 }
+
+
+extension Post: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        if self.caption.lowercased().contains(searchTerm.lowercased()) {
+            return true
+        } else {
+            return false
+        }
+       
+    }
+}
+
+//weak var delegate = SearchableRecord()?
+//..delegate = self.

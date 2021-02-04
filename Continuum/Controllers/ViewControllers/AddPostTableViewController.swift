@@ -8,52 +8,35 @@
 
 import UIKit
 
-class AddPostTableViewController: UITableViewController {
+class AddPostTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     // MARK: - Outlets
-    @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postCaptionTextField: UITextField!
-    @IBOutlet weak var selectedImageButton: UIButton!
     
-    // MARK: - Life Cycle Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureViewsForPost()
-    }
+    // MARK: - Properties
+    var selectedImage: UIImage?
     
+ // MARK: - Outlets
     override func viewDidDisappear(_ animated: Bool) {
-        configureViewsForPost()
-    }
-    
-    
-    func configureViewsForPost() {
-        selectedImageButton.setTitle("Selected Image", for: .normal)
-        postImageView.image = nil
-        postCaptionTextField.text = ""
+        postCaptionTextField.text = nil
     }
     
     // MARK: - Actions
-    @IBAction func selectedImageButtonTapped(_ sender: Any) {
-        postImageView.image = UIImage(named: "spaceEmptyState")
-        postCaptionTextField.text = ""
-        
-        //        selectedImageButton.setTitle("Selected Image", for: .normal)
-        //        postCaptionTextField.text = ""
-        //        postImageView.image = nil
-        //configureViewsForPost()
-    }
+//    @IBAction func selectedImageButtonTapped(_ sender: Any) {
+//        postCaptionTextField.text = ""
+//    }
     
     @IBAction func addPostButtonTapped(_ sender: Any) {
-        if let postImage = postImageView.image, let caption = postCaptionTextField.text, !caption.isEmpty {
+        if let postImage = selectedImage, let caption = postCaptionTextField.text, !caption.isEmpty {
             
             PostController.shared.createPostWith(image: postImage, caption: caption) { (_) in
             }
             self.tabBarController?.selectedIndex = 0
             
-        } else if postImageView.image == nil , let caption = postCaptionTextField.text, !caption.isEmpty {
+        } else if selectedImage == nil , let caption = postCaptionTextField.text, !caption.isEmpty {
             presentErrorToUser(textAlert:"You need to add an image!!")
             
-        } else if postImageView.image != nil , let caption = postCaptionTextField.text, caption.isEmpty{
+        } else if selectedImage != nil , let caption = postCaptionTextField.text, caption.isEmpty{
             presentErrorToUser(textAlert:"You need add a caption!!")
             
         } else {
@@ -64,4 +47,28 @@ class AddPostTableViewController: UITableViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0
     }
+    
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddPostVC" {
+            let destinationVC = segue.destination as? PhotoSelectorViewController
+            destinationVC?.delegate = self
+        }
+    }
+    
 }
+
+
+//MARK: - Extensions
+extension AddPostTableViewController: PhotoSelectorViewControllerDelegate {
+    func photoSelectorViewControllerSelected(image: UIImage) {
+        
+        selectedImage = image
+    }
+}
+
+
+
+
+
