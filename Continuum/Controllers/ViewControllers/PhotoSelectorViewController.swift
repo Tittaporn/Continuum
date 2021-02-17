@@ -15,7 +15,6 @@ protocol PhotoSelectorViewControllerDelegate: AnyObject {
 class PhotoSelectorViewController: UIViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var selectedImageButton: UIButton!
     
@@ -38,9 +37,7 @@ class PhotoSelectorViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func selectedImageButtonTapped(_ sender: Any) {
-        print("selectd Image Button Tapped")
-                     presentAlertUserSelectImage()
-        
+        presentAlertUserSelectImage()
     }
     
     func presentAlertUserSelectImage() {
@@ -50,7 +47,6 @@ class PhotoSelectorViewController: UIViewController {
             self.pickAnImage(sourceType: .photoLibrary)
         }
         let selectedImageFromCamera = UIAlertAction(title: "Camera", style: .destructive) { (_) in
-            //
            self.pickAnImage(sourceType: .camera)
      }
         alertController.addAction(selectedImageFromPhotoLibrary)
@@ -60,10 +56,23 @@ class PhotoSelectorViewController: UIViewController {
     }
     
     func pickAnImage(sourceType: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
+        } else {
+         presentAlertForNotAvailbleSourceType(sourceType: sourceType)
+         }
+    }
+    
+    func presentAlertForNotAvailbleSourceType(sourceType:         UIImagePickerController.SourceType) {
+        let title =  sourceType == .camera ? "No Camera Access" : "No Photo Access"
+        let message = sourceType == .camera ? "Plese allow access to the Camera to use this feature" : "Plese allow access to the Photos to use this feature"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
     
 }
@@ -76,7 +85,6 @@ extension PhotoSelectorViewController: UINavigationControllerDelegate, UIImagePi
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             selectedImageButton.setTitle("", for: .normal)
-            
             postImageView.image = image
             delegate?.photoSelectorViewControllerSelected(image: image)
             dismiss(animated: true, completion: nil)
@@ -86,5 +94,4 @@ extension PhotoSelectorViewController: UINavigationControllerDelegate, UIImagePi
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
 }

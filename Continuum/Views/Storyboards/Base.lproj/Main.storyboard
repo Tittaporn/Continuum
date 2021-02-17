@@ -138,7 +138,7 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJC-HZ-W9Q">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                                                     <connections>
-                                                        <segue destination="Dyd-f9-giN" kind="embed" identifier="toAddPostVC" id="pMu-ms-4sq"/>
+                                                        <segue destination="Dyd-f9-giN" kind="embed" identifier="toPostSelectedImageVC" id="pMu-ms-4sq"/>
                                                     </connections>
                                                 </containerView>
                                             </subviews>
@@ -402,7 +402,6 @@
                                 <connections>
                                     <action selector="selectedImageButton:" destination="unY-Bu-cez" eventType="touchUpInside" id="nOL-SH-9X4"/>
                                     <action selector="selectedImageButtonTapped:" destination="Dyd-f9-giN" eventType="touchUpInside" id="5RJ-At-sm0"/>
-                                    <action selector="selectedImageButtonTapped:" destination="WWa-IV-cVz" eventType="touchUpInside" id="zcf-wZ-F3Q"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceEmptyState" translatesAutoresizingMaskIntoConstraints="NO" id="oxM-lr-yKn">

@@ -25,7 +25,7 @@ class PostDetailTableViewController: UITableViewController {
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchComments()
     }
     
     // MARK: - Actions
@@ -38,8 +38,9 @@ class PostDetailTableViewController: UITableViewController {
         //  Initialize a UIActivityViewController with the Post’s image and the caption as the shareable objects.
         // Present the UIActivityViewController.
         guard let post = post else {return}
-        let postImage = post.photo
+      //  guard let postImage = post.photoData else {return}
         let postCaption = post.caption
+        guard let postImage = post.photo else {return}
         
         
         let activityViewController = UIActivityViewController(activityItems: [postImage,postCaption], applicationActivities: nil)
@@ -80,6 +81,21 @@ class PostDetailTableViewController: UITableViewController {
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func  fetchComments(){
+        guard let post = post else {return}
+        PostController.shared.fetchComments(for: post) { (result) in
+            switch result {
+            case .success(let comments):
+                guard let comments = comments else {return}
+                post.comments = comments
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                
+            }
+        }
     }
     
     // MARK: - Table view data source

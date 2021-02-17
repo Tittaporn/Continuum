@@ -22,10 +22,6 @@ class AddPostTableViewController: UITableViewController, UINavigationControllerD
     }
     
     // MARK: - Actions
-//    @IBAction func selectedImageButtonTapped(_ sender: Any) {
-//        postCaptionTextField.text = ""
-//    }
-    
     @IBAction func addPostButtonTapped(_ sender: Any) {
         if let postImage = selectedImage, let caption = postCaptionTextField.text, !caption.isEmpty {
             
@@ -51,19 +47,17 @@ class AddPostTableViewController: UITableViewController, UINavigationControllerD
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddPostVC" {
+        if segue.identifier == "toPostSelectedImageVC" {
             let destinationVC = segue.destination as? PhotoSelectorViewController
             destinationVC?.delegate = self
         }
     }
-    
 }
 
 
 //MARK: - Extensions
 extension AddPostTableViewController: PhotoSelectorViewControllerDelegate {
     func photoSelectorViewControllerSelected(image: UIImage) {
-        
         selectedImage = image
     }
 }

@@ -26,12 +26,27 @@ class PostListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postSearchBar.delegate = self
+        fetchPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resultsArray = PostController.shared.posts
         tableView.reloadData()
+    }
+    
+    // MARK: - Helper Fuctions
+    func fetchPosts(){
+        PostController.shared.fetchPosts { (result) in
+            switch result {
+            case .success(let posts):
+                guard let posts = posts else {return}
+                self.resultsArray = posts
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
     }
     
     // MARK: - Table view data source

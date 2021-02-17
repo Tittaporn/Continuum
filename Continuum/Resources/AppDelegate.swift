@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    accountStatusOfiPhoneUser { (success) in
+        let fetchUserStatusStatment = success ? "Successfully retrieved a logged in user" : "Failed to retrieved a logged in user"
+        print(fetchUserStatusStatment)
+    }
     // Override point for customization after application launch.
     return true
   }
@@ -40,7 +45,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-
+   
+    func accountStatusOfiPhoneUser(completion: @escaping (Bool) -> Void) {
+        CKContainer.default().accountStatus { (status, error) in
+            if let error = error {
+                print("Error Checking Account Status of iPhone User in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                return completion(false)
+            } else {
+                DispatchQueue.main.async {
+                    let tabBarController = self.window?.rootViewController
+                    let errorText = "Sign into iCloud in Settings"
+                    switch status {
+                    case .couldNotDetermine:
+                        tabBarController?.presentErrorToUser(textAlert: errorText + "\nThere was an unknown error fetching your iCloud Account.")
+                        completion(false)
+                    case .available:
+                        completion(true)
+                    case .restricted:
+                        tabBarController?.presentErrorToUser(textAlert: errorText + "\nYour iCould account is restricted.")
+                        completion(false)
+                    case .noAccount:
+                        tabBarController?.presentErrorToUser(textAlert: errorText + "\nNo account found.")
+                        completion(false)
+                    @unknown default:
+                        completion(false)
+                    }
+                }
+            }
+        }
+    }
 
 }
 

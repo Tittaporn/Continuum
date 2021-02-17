@@ -26,7 +26,7 @@ class PostTableViewCell: UITableViewCell {
     func updateViews() {
         guard let post = post else { return }
         captionLabel.text = post.caption
-        commentLabel.text = ("Comments : \(post.comments.count)")
+        commentLabel.text = ("Comments : \(post.commentCount)")
         postImageView.image = post.photo
     }
     
