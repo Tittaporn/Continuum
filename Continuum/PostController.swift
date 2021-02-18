@@ -19,7 +19,6 @@ class PostController {
     // CREATE
     func addComment(text: String, post: Post, completion: @escaping (Result<Comment,PostError>) -> Void){
         let newComment = Comment(text: text, post: post)
-        
         post.comments.append(newComment)
         let commentRecord = CKRecord(comment: newComment)
         publicDB.save(commentRecord) { (record, error) in
@@ -29,12 +28,10 @@ class PostController {
             }
             guard let record = record,
                   let savedComment = Comment(ckRecord: record, post: post) else {return completion(.failure(.unableToUpwrap))}
-     
             self.incrementCommentCountForEachPost(post: post, completion: nil)
             print("Successfully saved a comment in the Cloud.")
             completion(.success(savedComment))
         }
-        
     }
     
     func createPostWith(image: UIImage, caption: String, completion: @escaping (Result<Post?,PostError>) -> Void) {
@@ -53,51 +50,40 @@ class PostController {
                 completion(.success(savedPost))
             }
         }
-       
     }
     
     // READ
     func fetchPosts(completion: @escaping (Result<[Post]?,PostError>) -> Void) {
-        
         let predicate = NSPredicate(value: true)
-        
         let query = CKQuery(recordType: PostStrings.recordTypeKey, predicate: predicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
             DispatchQueue.main.async {
-           
-            if let error = error {
-                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                return completion(.failure(.ckError))
-            }
-            guard let records = records else {return completion(.failure(.unableToUpwrap))}
+                if let error = error {
+                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                    return completion(.failure(.ckError))
+                }
+                guard let records = records else {return completion(.failure(.unableToUpwrap))}
                 let fetchAllPosts = records.compactMap { Post(ckRecord: $0)}
                 self.posts = fetchAllPosts
                 print("Succesfully fetched all posts.")
                 completion(.success(fetchAllPosts))
             }
         }
-        
     }
     
     func fetchComments(for post: Post, completion: @escaping (Result<[Comment]?,PostError>) -> Void) {
-       // let predicate = NSPredicate(value: true)
-        
-        
         let postReference = post.recordID
         let predicate = NSPredicate(format: "%K == %@", CommentStrings.postReferenceKey, postReference)
         let commentIDs = post.comments.compactMap({$0.recordID})
         let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", commentIDs)
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
-
-       // let query = CKQuery(recordType: "Comment", predicate: compoundPredicate)
         let query = CKQuery(recordType: CommentStrings.recordTypeKey, predicate: compoundPredicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
             DispatchQueue.main.async {
-         
-            if let error = error {
-                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                return completion(.failure(.ckError))
-            }
+                if let error = error {
+                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                    return completion(.failure(.ckError))
+                }
                 guard let records = records else {return completion(.failure(.unableToUpwrap))}
                 let fetchCommentsOfPost = records.compactMap { Comment(ckRecord: $0, post: post)}
                 
@@ -105,7 +91,6 @@ class PostController {
                 print("Successfully fetch comments for each post.")
                 completion(.success(fetchCommentsOfPost))
             }
-            
         }
     }
     
@@ -118,8 +103,7 @@ class PostController {
         operation.modifyRecordsCompletionBlock = {records, recordIDs, error in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-               
-                    completion?(false)
+                completion?(false)
                 return
             }
             guard let record = records?.first else {
@@ -132,10 +116,7 @@ class PostController {
         publicDB.add(operation)
     }
     
-    
-    // DELETE
     // MARK: - CloudKit Subscriptions
-    // SUBSCRIBE
     func subscribeToNewPosts(completion: ((Bool,Error?)->Void)?){
         let allPostsPredicate = NSPredicate(value: true)
         let subscription = CKQuerySubscription(recordType: PostStrings.recordTypeKey, predicate: allPostsPredicate,subscriptionID: "AllPosts", options: .firesOnRecordUpdate)
@@ -153,25 +134,17 @@ class PostController {
             }
             completion?(true,nil)
         }
-        
     }
     
     func addSubscriptionTo(commentsForPost post: Post, completion: ((Bool,Error?) -> ())?) {
-        
         let postReference = post.recordID
         let predicate = NSPredicate(format: "%K == %@", CommentStrings.postReferenceKey, postReference)
-//        let commentIDs = post.comments.compactMap({$0.recordID})
-//        let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", commentIDs)
-//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
         let subscription = CKQuerySubscription(recordType: CommentStrings.recordTypeKey, predicate: predicate, subscriptionID: post.recordID.recordName, options: .firesOnRecordCreation)
-
-            //CKQuerySubscription(recordType: CommentStrings.recordTypeKey, predicate: compoundPredicate,)
         let notification = CKSubscription.NotificationInfo()
         notification.alertBody = "Comments! Updated in a POST you followed!"
         notification.shouldSendContentAvailable = true
-       notification.desiredKeys = nil
+        notification.desiredKeys = nil
         subscription.notificationInfo = notification
-        
         publicDB.save(subscription) { (_, error) in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
@@ -186,11 +159,11 @@ class PostController {
         publicDB.delete(withSubscriptionID: ckSubscriptionID) { (_, error) in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-               completion?(false)
+                completion?(false)
                 return
             }
             print("Successfully removed subscrption to comment. Subscription Deleted!")
-         completion?(true)
+            completion?(true)
         }
     }
     
@@ -212,7 +185,6 @@ class PostController {
     
     func toggleSubscriptionTo(commentsForPost post: Post, completion: ((Bool,Error?) -> ())?) {
         checkSubscription(to: post) { (isSubscripted) in
-           // guard let isSubscripted = isSubscripted else {return}
             if isSubscripted {
                 self.removeSubscriptionTo(commentsForPost: post) { (success) in
                     if success {
@@ -227,7 +199,7 @@ class PostController {
                 self.addSubscriptionTo(commentsForPost: post) { (success, error) in
                     if let error = error {
                         print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-                    completion?(false,nil)
+                        completion?(false,nil)
                     }
                     if success {
                         print("User did not subscript to the post :\(post.caption) and now just added subscription to comments for \(post.caption).")
@@ -240,5 +212,4 @@ class PostController {
             }
         }
     }
-    
 }

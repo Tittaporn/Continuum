@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		366E0E0F25DDB4C1002D0A30 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 366E0E0E25DDB4C1002D0A30 /* CloudKit.framework */; };
+		366E0E1425DE4438002D0A30 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E0E1325DE4438002D0A30 /* Comment.swift */; };
 		366E28AC25C9F9E900CB966F /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E28AB25C9F9E900CB966F /* PostListTableViewController.swift */; };
 		366E28AF25C9FA9500CB966F /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E28AE25C9FA9500CB966F /* PostDetailTableViewController.swift */; };
 		366E28B225C9FB1F00CB966F /* AddPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E28B125C9FB1F00CB966F /* AddPostTableViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		366E0E0C25DDB4B9002D0A30 /* Continuum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Continuum.entitlements; sourceTree = "<group>"; };
 		366E0E0E25DDB4C1002D0A30 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		366E0E1325DE4438002D0A30 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		366E28AB25C9F9E900CB966F /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		366E28AE25C9FA9500CB966F /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
 		366E28B125C9FB1F00CB966F /* AddPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostTableViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				366E28B425C9FBE500CB966F /* Post.swift */,
+				366E0E1325DE4438002D0A30 /* Comment.swift */,
 				367309DE25CB549B008FA744 /* SearchableRecord.swift */,
 			);
 			path = Models;
@@ -261,6 +264,7 @@
 				366E28C325CA291A00CB966F /* DateExtension.swift in Sources */,
 				367309E225CB7EC5008FA744 /* PhotoSelectorViewController.swift in Sources */,
 				366E28AF25C9FA9500CB966F /* PostDetailTableViewController.swift in Sources */,
+				366E0E1425DE4438002D0A30 /* Comment.swift in Sources */,
 				366E28B525C9FBE500CB966F /* Post.swift in Sources */,
 				366E28BC25CA05E400CB966F /* PostError.swift in Sources */,
 				366E28B825CA026D00CB966F /* PostController.swift in Sources */,

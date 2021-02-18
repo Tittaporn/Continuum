@@ -12,7 +12,6 @@ class PostDetailTableViewController: UITableViewController {
     
     // MARK: - Outlets
     @IBOutlet var photoImageView: UIImageView!
-    
     @IBOutlet weak var subscriptionButton: UIButton!
     
     // MARK: - Properties
@@ -35,49 +34,36 @@ class PostDetailTableViewController: UITableViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
-        // Add an IBAction from the Share button in your PostDetailTableViewController if you have not already.
-        //  Initialize a UIActivityViewController with the Post’s image and the caption as the shareable objects.
-        // Present the UIActivityViewController.
         guard let post = post else {return}
-        //  guard let postImage = post.photoData else {return}
         let postCaption = post.caption
         guard let postImage = post.photo else {return}
-        
-        
         let activityViewController = UIActivityViewController(activityItems: [postImage,postCaption], applicationActivities: nil)
-        
         present(activityViewController, animated: true) {
-            
         }
-        
     }
     
     @IBAction func followPostButtonTapped(_ sender: Any) {
-        
         guard let post = post else { return }
-           PostController.shared.toggleSubscriptionTo(commentsForPost: post, completion: { (success, error) in
-             if let error = error{
-               print("\(error.localizedDescription) \(error) in function: \(#function)")
-               return
-             }
+        PostController.shared.toggleSubscriptionTo(commentsForPost: post, completion: { (success, error) in
+            if let error = error{
+                print("\(error.localizedDescription) \(error) in function: \(#function)")
+                return
+            }
             self.updateFollowPostButtonText()
-           })
+        })
     }
-    
     
     // MARK: - Helper Fuctions
-func updateFollowPostButtonText(){
+    func updateFollowPostButtonText(){
         guard let post = post else { return }
-           //Check CloudKit for a() { subscription to this post and adjust the text of the button to reflect this
         PostController.shared.checkSubscription(to: post) { (found) in
-             DispatchQueue.main.async {
-               let followPostButtonText = found ? "Unfollow Post" : "Follow Post"
+            DispatchQueue.main.async {
+                let followPostButtonText = found ? "Unfollow Post" : "Follow Post"
                 self.subscriptionButton.setTitle(followPostButtonText, for: .normal)
-               //Asks the stackview to resize the button if it is necesssary to accomodate the new text
-              // self.buttonStackView.layoutIfNeeded()
-             }
-           }
+            }
+        }
     }
+    
     func updateViews() {
         guard let post = post else { return }
         photoImageView.image = post.photo
@@ -96,7 +82,6 @@ func updateFollowPostButtonText(){
             guard let text = alertController.textFields?.first?.text, !text.isEmpty,
                   let post = self.post else { return }
             PostController.shared.addComment(text: text, post: post) { (result) in
-                // Do something here.
             }
             self.tableView.reloadData()
         }
@@ -128,7 +113,6 @@ func updateFollowPostButtonText(){
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
-        
         let comment = post?.comments[indexPath.row]
         cell.textLabel?.text = comment?.text ?? "No Comment"
         cell.detailTextLabel?.text = comment?.timestamp.dateToString(format: .fullNumericTimestamp) ?? "No Comment Time."

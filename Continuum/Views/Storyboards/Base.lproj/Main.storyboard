@@ -48,7 +48,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <view key="tableFooterView" contentMode="scaleToFill" id="wSt-38-OKd">
-                            <rect key="frame" x="0.0" y="939" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="905.5" width="375" height="142"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="JQj-zH-Hrf">
@@ -57,38 +57,37 @@
                                     <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </activityIndicatorView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="409" id="4Dy-62-vio" customClass="PostTableViewCell" customModule="Continuum">
-                                <rect key="frame" x="0.0" y="72" width="375" height="409"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="4Dy-62-vio" customClass="PostTableViewCell" customModule="Continuum">
+                                <rect key="frame" x="0.0" y="72" width="375" height="473.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Dy-62-vio" id="duG-Ej-ZAJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="473.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6V6-JE-kah">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
+                                            <rect key="frame" x="10" y="20" width="355" height="433.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceEmptyState" translatesAutoresizingMaskIntoConstraints="NO" id="5Lv-DC-EbM">
-                                                    <rect key="frame" x="62.5" y="0.0" width="250" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="355"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="250" id="ZTM-mp-19l"/>
-                                                        <constraint firstAttribute="width" secondItem="5Lv-DC-EbM" secondAttribute="height" multiplier="1:1" id="cHV-vT-eQX"/>
+                                                        <constraint firstAttribute="width" secondItem="5Lv-DC-EbM" secondAttribute="height" multiplier="1:1" id="QAf-Db-yV6"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ePS-xY-oLl">
-                                                    <rect key="frame" x="10" y="260" width="355" height="149"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ePS-xY-oLl">
+                                                    <rect key="frame" x="18" y="365" width="319.5" height="68.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Caption)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFQ-Hb-1EE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="76.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="319.5" height="32"/>
+                                                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments: (Comment Count)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsJ-d3-6Rs">
-                                                            <rect key="frame" x="0.0" y="81.5" width="355" height="67.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <rect key="frame" x="0.0" y="37" width="319.5" height="31.5"/>
+                                                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -97,17 +96,16 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="ePS-xY-oLl" firstAttribute="leading" secondItem="6V6-JE-kah" secondAttribute="leading" constant="10" id="fhv-zm-X0N"/>
-                                                <constraint firstAttribute="trailing" secondItem="ePS-xY-oLl" secondAttribute="trailing" constant="10" id="qgP-KK-l6f"/>
+                                                <constraint firstItem="ePS-xY-oLl" firstAttribute="width" secondItem="6V6-JE-kah" secondAttribute="width" multiplier="0.9" id="7D1-wX-LPF"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="6V6-JE-kah" secondAttribute="trailing" id="RbQ-B0-qfm"/>
-                                        <constraint firstAttribute="bottom" secondItem="6V6-JE-kah" secondAttribute="bottom" id="VIw-qp-NPm"/>
-                                        <constraint firstItem="6V6-JE-kah" firstAttribute="top" secondItem="duG-Ej-ZAJ" secondAttribute="top" id="Xki-YA-MfR"/>
-                                        <constraint firstItem="6V6-JE-kah" firstAttribute="leading" secondItem="duG-Ej-ZAJ" secondAttribute="leading" id="dIL-4S-Pwz"/>
+                                        <constraint firstAttribute="trailing" secondItem="6V6-JE-kah" secondAttribute="trailing" constant="10" id="1yU-HL-MyK"/>
+                                        <constraint firstAttribute="bottom" secondItem="6V6-JE-kah" secondAttribute="bottom" constant="20" id="6gW-cH-M4D"/>
+                                        <constraint firstItem="6V6-JE-kah" firstAttribute="leading" secondItem="duG-Ej-ZAJ" secondAttribute="leading" constant="10" id="jix-cv-Eey"/>
+                                        <constraint firstItem="6V6-JE-kah" firstAttribute="top" secondItem="duG-Ej-ZAJ" secondAttribute="top" constant="20" id="veE-Am-mf8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -143,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
-                            <tableViewSection headerTitle="Image" id="gKg-4g-VvV">
+                            <tableViewSection headerTitle="POST PHOTO" id="gKg-4g-VvV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="303" id="ReQ-ld-wh2">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="303"/>
@@ -172,7 +170,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="textCaption" id="Ja8-Dc-TJT">
+                            <tableViewSection headerTitle="POST CAPTION" id="Ja8-Dc-TJT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="66" id="bnE-dh-zQF">
                                         <rect key="frame" x="0.0" y="414.5" width="375" height="66"/>
@@ -182,36 +180,37 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your post caption here..." textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="uqk-Xs-c61">
-                                                    <rect key="frame" x="40" y="5" width="257.5" height="56"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="20" y="10" width="335" height="46"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="uqk-Xs-c61" firstAttribute="top" secondItem="Axm-1R-7gu" secondAttribute="top" constant="5" id="2eO-kI-vUg"/>
-                                                <constraint firstAttribute="bottom" secondItem="uqk-Xs-c61" secondAttribute="bottom" constant="5" id="42k-eH-xWY"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uqk-Xs-c61" secondAttribute="trailing" symbolic="YES" id="LXt-JQ-Hgw"/>
-                                                <constraint firstItem="uqk-Xs-c61" firstAttribute="leading" secondItem="Axm-1R-7gu" secondAttribute="leading" constant="40" id="aa8-K1-fbv"/>
+                                                <constraint firstItem="uqk-Xs-c61" firstAttribute="top" secondItem="Axm-1R-7gu" secondAttribute="top" constant="10" id="JYD-eZ-Jji"/>
+                                                <constraint firstItem="uqk-Xs-c61" firstAttribute="leading" secondItem="Axm-1R-7gu" secondAttribute="leading" constant="20" id="aa8-K1-fbv"/>
+                                                <constraint firstAttribute="bottom" secondItem="uqk-Xs-c61" secondAttribute="bottom" constant="10" id="jZb-KR-niu"/>
+                                                <constraint firstAttribute="trailing" secondItem="uqk-Xs-c61" secondAttribute="trailing" constant="20" id="tr1-ms-TDt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="addButton" id="iKB-Lp-1ho">
+                            <tableViewSection id="iKB-Lp-1ho">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="86" id="mB6-Vv-iau">
-                                        <rect key="frame" x="0.0" y="536.5" width="375" height="86"/>
+                                        <rect key="frame" x="0.0" y="516.5" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mB6-Vv-iau" id="H15-Hn-TKb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkR-3Z-3b2">
-                                                    <rect key="frame" x="66" y="20.5" width="243" height="45"/>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkR-3Z-3b2">
+                                                    <rect key="frame" x="46" y="21" width="283" height="44"/>
                                                     <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
                                                     <state key="normal" title="Add Post">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="titleShadowColor" systemColor="opaqueSeparatorColor"/>
@@ -223,7 +222,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="VkR-3Z-3b2" firstAttribute="leading" secondItem="H15-Hn-TKb" secondAttribute="leadingMargin" constant="50" id="5Bq-PW-oan"/>
+                                                <constraint firstItem="VkR-3Z-3b2" firstAttribute="leading" secondItem="H15-Hn-TKb" secondAttribute="leadingMargin" constant="30" id="5Bq-PW-oan"/>
                                                 <constraint firstItem="VkR-3Z-3b2" firstAttribute="centerY" secondItem="H15-Hn-TKb" secondAttribute="centerY" id="KZq-V5-syg"/>
                                                 <constraint firstItem="VkR-3Z-3b2" firstAttribute="centerX" secondItem="H15-Hn-TKb" secondAttribute="centerX" id="W9r-hj-x4w"/>
                                             </constraints>
@@ -264,24 +263,25 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleAspectFill" id="rt3-yL-R1H">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ota-bT-t72">
-                                    <rect key="frame" x="1" y="3.5" width="373" height="357.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ota-bT-t72">
+                                    <rect key="frame" x="37.5" y="0.0" width="300" height="380"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jhA-fM-p15">
-                                            <rect key="frame" x="33" y="0.0" width="307.5" height="307.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="jhA-fM-p15" secondAttribute="height" multiplier="1:1" id="U1O-Qv-AMH"/>
+                                                <constraint firstAttribute="width" secondItem="jhA-fM-p15" secondAttribute="height" multiplier="1:1" id="w5Z-wv-5ck"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iSY-kf-ZJ6">
-                                            <rect key="frame" x="63" y="327.5" width="247" height="30"/>
+                                        <stackView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iSY-kf-ZJ6">
+                                            <rect key="frame" x="0.0" y="316" width="300" height="64"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdw-im-uqx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="79" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="64"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
                                                     <state key="normal" title="comment">
                                                         <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     </state>
@@ -290,9 +290,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hyL-cY-6JY">
-                                                    <rect key="frame" x="84" y="0.0" width="79" height="30"/>
+                                                    <rect key="frame" x="107" y="0.0" width="64.5" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
                                                     <state key="normal" title="Share">
                                                         <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     </state>
@@ -301,9 +302,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="D0p-gK-ZPl">
-                                                    <rect key="frame" x="168" y="0.0" width="79" height="30"/>
+                                                    <rect key="frame" x="176.5" y="0.0" width="123.5" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
                                                     <state key="normal" title="Follow Post">
                                                         <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
                                                     </state>
@@ -319,31 +321,32 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ota-bT-t72" secondAttribute="trailing" constant="0.80000000000000004" id="E35-fF-aYW"/>
-                                <constraint firstItem="ota-bT-t72" firstAttribute="centerY" secondItem="rt3-yL-R1H" secondAttribute="centerY" id="bI0-bo-DsX"/>
-                                <constraint firstItem="ota-bT-t72" firstAttribute="centerX" secondItem="rt3-yL-R1H" secondAttribute="centerX" id="fgB-ih-UmO"/>
-                                <constraint firstItem="ota-bT-t72" firstAttribute="leading" secondItem="rt3-yL-R1H" secondAttribute="leading" constant="0.80000000000000004" id="g8q-yF-bmO"/>
+                                <constraint firstItem="ota-bT-t72" firstAttribute="centerY" secondItem="rt3-yL-R1H" secondAttribute="centerY" constant="10" id="1ar-mA-ZlP"/>
+                                <constraint firstItem="ota-bT-t72" firstAttribute="centerX" secondItem="rt3-yL-R1H" secondAttribute="centerX" id="9OL-1S-LQv"/>
+                                <constraint firstItem="jhA-fM-p15" firstAttribute="width" secondItem="rt3-yL-R1H" secondAttribute="width" multiplier="0.8" id="MB9-ms-TUK"/>
+                                <constraint firstAttribute="bottom" secondItem="ota-bT-t72" secondAttribute="bottom" constant="20" id="Rtb-h7-qRL"/>
+                                <constraint firstItem="ota-bT-t72" firstAttribute="height" secondItem="rt3-yL-R1H" secondAttribute="height" multiplier="0.95" id="ioL-hX-8fa"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" textLabel="7LX-KJ-F5Y" detailTextLabel="fdy-jI-zY8" style="IBUITableViewCellStyleSubtitle" id="H5L-t3-iy4">
-                                <rect key="frame" x="0.0" y="392" width="375" height="55.5"/>
+                                <rect key="frame" x="0.0" y="428" width="375" height="72.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H5L-t3-iy4" id="e1t-bw-NMV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7LX-KJ-F5Y">
-                                            <rect key="frame" x="16" y="10" width="33" height="20.5"/>
+                                            <rect key="frame" x="16" y="9.5" width="40" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdy-jI-zY8">
-                                            <rect key="frame" x="16" y="31.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="16" y="38" width="64.5" height="22.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -371,7 +374,7 @@
         <scene sceneID="gr6-0J-07b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YGb-6n-Tc4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Posts" image="square.grid.3x1.fill.below.line.grid.1x2" catalog="system" id="Usc-dD-gvj"/>
+                    <tabBarItem key="tabBarItem" title="Posts" image="square.and.pencil" catalog="system" id="Usc-dD-gvj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8An-1O-9lx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -396,7 +399,7 @@
         <scene sceneID="6FS-s1-Ped">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ak9-72-tlc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Post" image="camera.fill" catalog="system" id="u2f-i0-muJ"/>
+                    <tabBarItem key="tabBarItem" title="Add Post" image="camera" catalog="system" id="u2f-i0-muJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zhx-l2-Mq4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -423,6 +426,12 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngc-Hl-NQk">
                                 <rect key="frame" x="16" y="0.0" width="343" height="303"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="selectedImageButton:" destination="unY-Bu-cez" eventType="touchUpInside" id="nOL-SH-9X4"/>
                                     <action selector="selectedImageButtonTapped:" destination="Dyd-f9-giN" eventType="touchUpInside" id="5RJ-At-sm0"/>
@@ -437,7 +446,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2pl-t5-UBl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ngc-Hl-NQk" firstAttribute="top" secondItem="ivM-BM-ajt" secondAttribute="topMargin" id="JZU-nU-iMq"/>
                             <constraint firstItem="Ngc-Hl-NQk" firstAttribute="leading" secondItem="ivM-BM-ajt" secondAttribute="leadingMargin" id="Q0v-CU-TEW"/>
@@ -458,14 +467,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera.fill" catalog="system" width="128" height="94"/>
+        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="spaceEmptyState" width="1024" height="569"/>
-        <image name="square.grid.3x1.fill.below.line.grid.1x2" catalog="system" width="128" height="113"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

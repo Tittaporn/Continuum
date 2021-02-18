@@ -8,9 +8,7 @@
 
 import Foundation
 
-
 enum PostError: LocalizedError {
-    
     case ckError
     case thrownError(Error)
     case unableToUpwrap
