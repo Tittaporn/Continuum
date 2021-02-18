@@ -13,6 +13,8 @@ class PostListTableViewController: UITableViewController {
     
     @IBOutlet weak var postSearchBar: UISearchBar!
     
+    @IBOutlet weak var activityView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     var resultsArray: [Post] = []
@@ -26,22 +28,27 @@ class PostListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postSearchBar.delegate = self
-        fetchPosts()
+        //fetchPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resultsArray = PostController.shared.posts
-        tableView.reloadData()
+//        tableView.reloadData()
+        fetchPosts()
     }
     
     // MARK: - Helper Fuctions
     func fetchPosts(){
+        self.activityView.isHidden = false
+        self.activityIndicator.startAnimating()
         PostController.shared.fetchPosts { (result) in
             switch result {
             case .success(let posts):
                 guard let posts = posts else {return}
                 self.resultsArray = posts
+                self.activityView.isHidden = true
+                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             case .failure(let error):
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")

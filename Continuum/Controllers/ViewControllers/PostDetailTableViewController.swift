@@ -13,6 +13,7 @@ class PostDetailTableViewController: UITableViewController {
     // MARK: - Outlets
     @IBOutlet var photoImageView: UIImageView!
     
+    @IBOutlet weak var subscriptionButton: UIButton!
     
     // MARK: - Properties
     var post: Post? {
@@ -38,7 +39,7 @@ class PostDetailTableViewController: UITableViewController {
         //  Initialize a UIActivityViewController with the Post’s image and the caption as the shareable objects.
         // Present the UIActivityViewController.
         guard let post = post else {return}
-      //  guard let postImage = post.photoData else {return}
+        //  guard let postImage = post.photoData else {return}
         let postCaption = post.caption
         guard let postImage = post.photo else {return}
         
@@ -53,12 +54,34 @@ class PostDetailTableViewController: UITableViewController {
     
     @IBAction func followPostButtonTapped(_ sender: Any) {
         
+        guard let post = post else { return }
+           PostController.shared.toggleSubscriptionTo(commentsForPost: post, completion: { (success, error) in
+             if let error = error{
+               print("\(error.localizedDescription) \(error) in function: \(#function)")
+               return
+             }
+            self.updateFollowPostButtonText()
+           })
     }
     
+    
     // MARK: - Helper Fuctions
+func updateFollowPostButtonText(){
+        guard let post = post else { return }
+           //Check CloudKit for a() { subscription to this post and adjust the text of the button to reflect this
+        PostController.shared.checkSubscription(to: post) { (found) in
+             DispatchQueue.main.async {
+               let followPostButtonText = found ? "Unfollow Post" : "Follow Post"
+                self.subscriptionButton.setTitle(followPostButtonText, for: .normal)
+               //Asks the stackview to resize the button if it is necesssary to accomodate the new text
+              // self.buttonStackView.layoutIfNeeded()
+             }
+           }
+    }
     func updateViews() {
         guard let post = post else { return }
         photoImageView.image = post.photo
+        updateFollowPostButtonText()
     }
     
     func presentCommentAlert() {
